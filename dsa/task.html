@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Array Prototyping</title>
+</head>
+
+<body>
+
+	<script type="text/javascript">
+
+		// HOF (Higher Order Functions)
+		// A function which accept functions as a prameter or return a function as a result 
+		// it is called HOF
+
+		// example of HOF:
+		// map(), reduce(), filter(), forEach()
+
+
+		const data = [
+			{
+				name: 'John',
+				age: 30,
+				dept: "IT",
+			},
+			{
+				name: 'Smith',
+				age: 23,
+				dept: "IT",
+			},
+			{
+				name: 'Maxima',
+				age: 32,
+				dept: "IT",
+			},
+			{
+				name: 'Moony',
+				age: 21,
+				dept: "HR",
+			},
+			{
+				name: 'Sneha',
+				age: 28,
+				dept: "HR",
+			},
+		];
+		console.log(data);
+
+		// expected result
+		/*const newData = {
+			"HR": [
+				{
+					name: 'Moony',
+					age: 21,
+					dept: "HR",
+				},
+				{
+					name: 'Sneha',
+					age: 28,
+					dept: "HR",
+				},
+			],
+			"IT": [
+				{
+					name: 'John',
+					age: 30,
+					dept: "IT",
+				},
+				{
+					name: 'Smith',
+					age: 23,
+					dept: "IT",
+				},
+				{
+					name: 'Maxima',
+					age: 32,
+					dept: "IT",
+				},
+			]
+		} */
+
+		// const HRData = data.filter((item)=> item.dept == "HR");
+		// const ITData = data.filter((item)=> item.dept == "IT");
+		// console.log('HRData : ', HRData);
+		// console.log('ITData : ', ITData);
+		
+		// create a polyfill of filter method
+
+		Array.prototype.myFilter = function (cb){
+			// console.log("Hello custom filter loop");
+			let filerArray = [];
+			// console.log("arg ", arg);
+			// console.log("arg ", this);
+			for( let i=0; i < this.length; i++){
+				if( cb(this[i], i, this) ){
+					filerArray.push(this[i]);
+					// filerArray[i] = this[i];
+				};
+			}
+			return filerArray;
+		}
+		const HRData = data.myFilter((item)=> item.dept == "HR");
+		const ITData = data.myFilter((item)=> item.dept == "IT");
+		// console.log('HRData : ', HRData);
+		// console.log('ITData : ', ITData);
+
+
+		const FilterData = {
+			"HR":HRData,
+			"IT":ITData,
+		}
+		console.log('FilterData : ', FilterData);
+
+
+
+
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div.relative {
+  position: relative;
+  width: 400px;
+  height: 200px;
+  border: 3px solid #73AD21;
+} 
+
+div.absolute {
+  position: absolute;
+  top: 80px;
+  right: 0;
+  width: 200px;
+  height: 100px;
+  border: 3px solid #73AD21;
+}
+.readMore, .readLess{
+  color: blue;
+  text-decoration: underline;
+  cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<!-- <h2>position: absolute;</h2> -->
+
+<!-- <p>An element with position: absolute; is positioned relative to the nearest positioned ancestor (instead of positioned relative to the viewport, like fixed):</p> -->
+
+<!-- <div class="relative">This div element has position: relative;
+  <div class="absolute">This div element has position: absolute;</div>
+</div> -->
+<div class="textStrDiv">
+  
+</div>
+<script>
+ let str = '<p class="textStr">National Current Affairs 2023: Get the latest national current affairs news of India. Adda247 provides you with the best compilation of National Current Affairs & News. Find the most relevant and updated India National Current Affairs for Banking, SSC, Railway, UPSC & Other Govt. Exams and Increase your chances of acing Upcoming Govt Exams. Keep reading current affairs and GK facts updated on a daily basis on this page. Stay aware of the recent happenings in the country and equip your preparation for the upcoming govt exams</p>';
+ let btnReadLess = '<span class="readLess" onclick="btnReadLessFun()">  Read Less</span>'
+ 
+ function showReadMore(str){
+  let op = str.slice(0, 100) + '  <span class="readMore">Read More ....</span>';
+  return op;
+ }
+ let textStrDiv = document.querySelector('.textStrDiv');
+ textStrDiv.innerHTML = showReadMore(str);
+
+ let readMore = document.querySelector('.readMore');
+ readMore.addEventListener('click',function(e) {
+  textStrDiv.innerHTML = str + btnReadLess;
+ });
+
+ function btnReadLessFun(){
+  let readLess = document.querySelector('.readLess');
+  textStrDiv.innerHTML = showReadMore(str);
+ }
+ 
+ 
+ 
+      
+      
+       url = 'https://jsonplaceholder.typicode.com/posts';
+    const result = async () => {
+
+        try{
+            const data = await fetch(url);
+            console.log(data)
+        }catch(err){
+           console.log('err', err)
+        }
+    }
+result();
+</script>
+</body>
+</html>
+
+
+87 15

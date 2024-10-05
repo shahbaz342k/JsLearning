@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Mosquito Game</title>
+	<style type="text/css">
+		
+		
+		.mosquito{
+			background: skyblue;	
+			margin: 0 auto;
+			min-height: 500px;
+			max-width: 500px;
+			margin-top: 40px;
+			border-radius: 5px;
+			box-shadow: 1px 1px #b6343463;
+
+		}	
+		.mosquitoImg{
+			position: relative;
+			height: 30px;
+			padding: 10px;
+			cursor: pointer;
+		}
+		.btn{
+			padding: 8px 15px;
+			border: 1px solid #ddd;
+			outline: none;
+			cursor: pointer;
+			background: skyblue;
+			color: #fff;
+			border-radius: 5px;
+			font-weight: bold;
+		}
+		.center{
+			margin: 0 auto;
+		}
+		.game-footer{
+			    display: flex;
+		    justify-content: center;
+		    margin-top: 20px;
+		    flex-direction: column;
+		    align-items: center;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		<div class="mosquito">
+			<img src="th.jpg" class="mosquitoImg" id="mosquitoImg" title="hit me" onclick="hitMosquito()" />
+		</div>
+		<div class="game-footer">
+			<div id="gameScore" style="display:none;">
+			<p>Score: <span id="score"></span></p>
+			</div>
+			<div id="gameStatus"></div>
+			<div id="timeStatus" style="display:none;">
+				<h4>Time Left: <span id="timeLeft"></span></h4>
+			</div>
+			<div>
+				<button class="btn center" onclick="handleStartGame()" id="startGame">Start Game</button>
+			</div>
+		</div>
+		
+	</div>
+	<script type="text/javascript">
+		// hit count set 0
+		let hitCount = 0;
+
+		// flag is Game start set to false inital
+		let isGameStart = false;
+
+		let timeLeft = 60;
+
+		let gameStatus = document.getElementById('gameStatus');
+		let timeLeftEl = document.getElementById('timeLeft');
+
+		// start game function when use click on start game button
+		function startGame(){
+			
+			let mosquitoImg = document.getElementById('mosquitoImg');
+			let topPX =Math.floor( Math.random() * 400);
+			let leftPX =Math.floor( Math.random() * 400);
+
+			// console.log(randomPix);
+			mosquitoImg.style.top  = topPX+"px"
+			mosquitoImg.style.left = leftPX+"px"
+		}
+
+		// handle start game funciton logic
+		function handleStartGame(){
+			document.getElementById('gameScore').style.display = 'block';
+			document.getElementById('timeStatus').style.display = 'block';
+			let gemStartBtn = document.getElementById('startGame');
+			gameStatus.style.display = 'none';
+			isGameStart = true;
+			hitCount = 0;
+			gemStartBtn.setAttribute('disabled', 'disabled');
+			gemStartBtn.style.cursor = 'none';
+			setHitCount(hitCount)
+			let timer = setInterval( () => {
+				
+				// start game function calling
+				startGame()
+
+				// decrement time left by 1
+				timeLeft--;
+				
+				// console.log(timeLeft)
+				timeLeftEl.innerText = timeLeft
+
+			}, 1000);
+
+			setTimeout( () => {
+				clearTimeout(timer)	
+				gameStatus.style.display = 'block';	
+				gameStatus.innerHTML = '<h2>Game End</h2>';
+				isGameStart = false;
+				gemStartBtn.removeAttribute('disabled', 'disabled');
+				gemStartBtn.style.cursor = 'pointer';
+
+				// set again timeLeft when game over
+				timeLeft = 60;
+			}, 60*1000)
+		}
+
+		// on click function when use hit on mosquito
+		function hitMosquito() {
+			if( isGameStart ){
+				hitCount++
+				console.log('hit click', hitCount);
+				setHitCount(hitCount);	
+			}
+			
+		}
+
+		// set the score using this funciton
+		function setHitCount(hitCount) {
+			let score = document.getElementById('score');
+			score.innerText = hitCount	
+		}
+
+
+		function testing(){
+		    const a = b = c = 1;
+			// const b = 1
+		}
+		debugger;
+		testing();
+		console.log(typeof a, typeof b,typeof c)
+		// console.log('b ', b)
+		// sayHello();
+		// greet();
+
+		function sayHello(){
+			console.log('Hello john');
+		}
+		let greet = () =>{
+			console.log('How are you ?');
+		}
+	</script>
+</body>
+</html>

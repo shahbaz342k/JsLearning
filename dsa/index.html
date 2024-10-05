@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Learning</title>
+</head>
+<body>
+    <h2>DSA Learning</h2>
+    <!-- <script src="bubbleSort.js"></script> -->
+    <!-- <script src="selectionSort.js"></script> -->
+    <!-- <script src="/leanerSearch.js"></script> -->
+    <!-- <script src="/binarySearch.js"></script> -->
+    <!-- <script src="/callApllyAndBind.js"></script> -->
+
+    
+
+    <script>
+        const fetchData = async () => {
+    	    const myPromise = new Promise( (resolve,reject) => {
+            setTimeout( () => {
+                data = true;
+                if( data ){
+                    resolve('data have')
+                }else{
+                    reject('not have data')
+                }
+            },1000)
+        })
+        let res = await myPromise;
+        console.log(res)
+        console.log('done')
+    }
+    // fetchData();
+
+    function getLength(str){
+        let i=0;
+        while( str[i] != null ){
+            i++;
+        }
+        // console.log('length is:',i)
+        return i;
+    }
+    // getLength('vark');
+
+    function customSort(str){
+        let len=0;
+        while( str[len] != null ){
+            len++;
+        }
+        // console.log('length is:',i)
+        // return i;
+        let res='';
+        for (let j = len-1; j>=0; j--) {
+            res += str[j];
+        }
+        return res;
+    }
+    const result = customSort('london');
+    // console.log(result)
+    console.log( sum(2,4) )
+
+    function sum(a,b){
+        return a+b;
+    }
+
+    var sumArrow =  (a,b) =>{
+        return a+b;
+    }
+    </script>
+</body>
+</html>

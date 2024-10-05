@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <title>Js Learning</title>
+    </head>
+    <body>
+        
+
+        <form id="create-account">
+            <input type="text" id="name" placeholder="enter account name">
+            <input type="text" id="balance"  placeholder="enter account balance">
+            <button>Create</button>
+        </form>
+
+        <form id="deposit-account">
+            <input type="text" id="account-number" placeholder="enter account number">
+            <input type="text" id="depoist-balance"  placeholder="enter balance">
+            <button>Deposit</button>
+        </form>
+
+        <form id="withdraw-account">
+            <input type="text" id="w-account-number" placeholder="enter account number">
+            <input type="text" id="w-balance"  placeholder="enter balance">
+            <button>Withdraw</button>
+        </form>
+
+        <!-- <script src="interview.js" ></script> -->
+        <script src="prototype.js" ></script>
+        <!-- <script src="bclass.js" ></script> -->
+        <!-- <script src="inheritance.js" ></script> -->
+        <!-- <script src="encapsulation.js" ></script> -->
+        <!-- <script src="encapsulation.js" ></script> -->
+        <!-- <script src="encapsulation.js" ></script> -->
+        <!-- <script src="dsa/anagram.js" ></script> -->
+        <!-- <script src="dsa/currying.js" ></script> -->
+        <!-- <script src="dsa/duplicatearr.js" ></script> -->
+        <!-- <script src="dsa/countunique.js" ></script> -->
+        <!-- <script src="dsa/findsumlargest.js" ></script> -->
+        <!-- <script src="dsa/eventloop.js" ></script> -->
+        <!-- <script src="learn.js" ></script> -->
+
+        <script>
+            let arr = [40,21,3,12,4,7,86,5]
+            console.log('bubble sort');
+            // in this we compare two elemnt in array if first is > (gretor) than second then swap 
+            // and every step we put the largest element in last and remove that
+            function bubbleSort(arr){
+                var n = arr.length;
+                // var inum = 0;
+                // var jnum = 0;
+                for (let i = 0; i < n-1; i++) {
+                    // inum++
+                    // console.log('i loop run :', inum)
+                    
+                    for ( let j=0; j < n-1-i; j++ ){
+                        // jnum++
+                        // // console.log('j loop run times :',jnum)
+                        // // console.log('j loop run :', j)
+                        if(arr[j] > arr[j+1]){
+                            let temp = arr[j]
+                            arr[j] = arr[j+1];
+                            arr[j+1] = temp;
+                        }
+                    }
+                }
+                return arr;
+            }
+            var sortel = bubbleSort(arr)
+            console.log(sortel)
+
+            function bubbleSortAdvance(arr){
+                var n = arr.length;
+                /*
+                    start = 0, end = 6 if( arr[start] > arr[end] ) then 
+                */
+               num=0
+                for ( let i=0; i < n-1; i++ ){
+                    num++;
+                    console.log('i loop run :', num)
+                    
+                    if(arr[i] > arr[i+1]){
+                        temp = arr[i]
+                        arr[i] = arr[i+1];
+                        arr[i+1] = temp;
+                       i=-1
+                    }
+                }
+
+                return arr;
+            }
+            // var sortel = bubbleSortAdvance(arr)
+            // console.log(sortel)
+        </script>
+    </body>
+</html>

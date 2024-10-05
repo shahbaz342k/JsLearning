@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Array Prototyping</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		
+		// HOF (Higher Order Functions)
+		// A function which accept functions as a prameter or return a function as a result 
+		// it is called HOF
+
+		// example of HOF:
+		// map(), reduce(), filter(), forEach()
+
+		const arr = [1,4,6,7,10];
+		
+		// const res = arr.map( (val, key) => {
+		// 	return val * 3;
+		// });
+		
+		// const res = arr.filter( (val, key) => {
+		// 	return val > 4;
+		// });
+
+		// const res = arr.reduce( (acc, val) => {
+		// 	return acc+val
+		// }, 22);
+
+		// arr.forEach( (val, key, arr) => {
+		// 	arr[key] = val+2
+		// });
+		// console.log(arr); 
+		// console.log(arr); 
+
+		// create a polyfill of map() function
+		Array.prototype.customMap = function( arg ){
+			let res = [];
+			for( let i=0; i < this.length; i++){
+				res.push( arg( this[i] ) )
+			}
+			return res;
+			// return this;
+		}  
+		const result = arr.customMap( (val) => val + 5);
+		console.log(result);
+		
+	</script>
+</body>
+</html>

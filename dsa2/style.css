@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&dispaly=swap');
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: #2a2e2b;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    font-family: 'Muli',sans-serif;
+    text-align: center;
+}
+.inputContainer{
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.inputContainer > input{
+    width: 200px;
+    height: 50px;
+    cursor: pointer;
+    border:none;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    outline: none;
+}
+
+.countdown-container{
+    display: flex;
+    justify-content: center;
+}
+.time{
+    display: flex;
+    font-size: 1.2em;
+    flex-direction: column;
+    margin: 0 15px;
+}
+.ti h1{
+    margin-bottom: 0;
+}
+.time small{
+    color: #ccc;
+}
+/* #days{
+
+} */

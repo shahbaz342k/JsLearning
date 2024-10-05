@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Closures Javscript</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+
+		function example1(){
+		  for (var i = 0; i < 3; i++) {
+		    setTimeout(function() { console.log(i); }, 1000 * i);
+		  }
+		}
+
+
+		function example2(){
+		  for (var i = 0; i < 3; i++) {
+		    setTimeout((function() { 
+		      console.log(i) 
+		    })(), 1000 + i);
+		  }
+		}
+
+
+		function example3(){
+		  for (var i = 0; i < 3; i++) {
+		    setTimeout(function(k) { 
+		      return function() { console.log(k); } 
+		    }(i), 1000 * i);
+		  }  
+		}
+
+
+
+		
+		// ------------------------------------------------------- //
+
+		// call, apply and bind
+		// call apply and bind method are used for 
+		// function borrowing 
+
+		function printDetails(city,country){
+			console.log( 
+				`${this.firstName} ${this.lastName} from ${city}, ${country}` 
+			);
+		}
+		
+		let person = {
+			firstName: 'John',
+			lastName: 'Doe'
+		}
+		let person2 = {
+			firstName: 'Mohd',
+			lastName: 'Shahbaz'
+		}
+		let person3 = {
+			firstName: 'Juns',
+			lastName: 'Bels'
+		}
+		printDetails.call(person,'New Delhi','India');
+		printDetails.apply(person2,['Kanpur','India']);
+
+		// bind same as call but it is not invoked directly it gives u copy of function which used later
+		let res = printDetails.bind(person3,'Berlin','London');
+		res();
+
+	</script>
+</body>
+</html>

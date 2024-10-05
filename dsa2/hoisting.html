@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Hoisting Javascript</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*func1() // 'Welcom msg'
+		func2() // func2 is not a function *note: when using var keyword
+		func2() // Cannot access 'func2' before initialization *note: when using let or const keyword
+		var func2 = () =>{
+		    console.log('I will subscribe to geeksForGeeks')
+		}
+		function func1(){
+		    console.log('Welcome to GeeksforGeeks')
+		}
+*/
+		//---------------------------------------------------------//
+
+		var a = 10;
+		function getRate() {
+			// debugger;
+			if( a == undefined ){
+				let a = 6
+				console.log( a );
+				return a;
+			}else{
+				console.log( a );
+				return a
+			}
+		}
+		getRate();
+
+		// in function we check a is undefined or not 
+		// it won't go inside if block becoz 
+		// a is declare using var in global scope then in function var keyword has more priority than let 
+		// output wil be 10
+
+		// -------------------------------------------------- //
+		// Asynchronus example
+		console.log(1);
+		setTimeout( () => console.log(2), 1000);
+		setTimeout( () => console.log(3), 0);
+		// Promise.resolve( console.log(3))
+		console.log(4);
+	</script>
+</body>
+</html>

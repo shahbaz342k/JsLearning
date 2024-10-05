@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> Html 5 Attributes </title>
+</head>
+
+<body>
+
+
+	<!-- html 5 elements -->
+	<input type="color" onchange="getColor(this)" />
+	<br />
+	<br />
+	<input type="date" onchange="getSelectedDate(this)" />
+	<br />
+	<br />
+	<input type="email" placeholder="email" />
+	<input type="number" placeholder="number" min=1 />
+
+	<script type="text/javascript">
+
+
+		function getColor(context) {
+			console.log(' color selected is :',
+				context.value)
+		}
+		function getSelectedDate(context) {
+			console.log(context.value)
+		}
+
+	</script>
+</body>
+
+</html>

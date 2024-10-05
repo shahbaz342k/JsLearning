@@ -1,0 +1,511 @@
+1. Features of ES6( ECMAScript 2015 );
+
+Ans: Template literals, Default Parameter, Arrow functions, Destructring( array and object ), Spread and Rest Operator, 
+let and const keyword, Promises.
+
+a. Template literals: With the help of Template literals we can pass the javscript variable in the string using backtick 
+example : name ="John Doe"
+console.log(` Hi i am ${name} `);
+-------------------------------------
+
+b. Default Parameter: In es6 We can pass default Parameter in function, before es6 we can use OR opertator when we print the 
+default value of paramater.
+example : function test( a, b=0 ){
+    console.log(a,b)
+} 
+test('hello');
+------------------------------------
+
+c. Arrow functions : It provides a brief but comprehensive syntax for writing function expressions by
+ removing the "function" and "return" keywords.
+  *Arrow functions does not have own this. 
+  *Arrow function points immediate parent object.
+
+const abc = (x,y) => x+y;
+
+-------------------------------------
+
+d. Destructring : With the help of Destructring concept we can Destructring the array and object easily.
+    d.1 -> Array Destructring Example -
+    const myarr = ['john doe',21];
+    const [myName, myAge] = myarr 
+    console.log(myName, myAge);
+
+    d.2 -> Object Destructring Example -
+    const myObj = {
+        name: 'John Smith',
+        age: 23
+    }
+    const {name,age} = myObj;
+    console.log(name, age);
+--------------------------------------
+
+e. Spread Operator: Using Spread opertator we can create a deep copy of object or array 
+( means whose orginal object or array cannot be change if we change the deep copy object value)
+    Example of Spread Operator -
+    const person = {
+        name:"John doe",
+        age: 23
+    }
+    const person2 = {...person};
+    person2.name = "Mohd Shahbaz"
+    person2.age = 26;
+    console.log(person)
+    console.log(person2)
+
+   Rest Operator: Rest opertator is mostly used in functions as a paramater or in array and object for destructring;
+
+    Example of Rest Operator are -
+    1. function restExmaple(name, age, ...rest){
+        console.log(name, age, rest)
+    }
+    restExmaple('mohd shahbaz', 23, 'kanpur','software developer','looking for job change')
+
+    2. const body = {
+        name:"test",
+        age:23,
+        city:"kanpur",
+        occupation:"software developer"
+    } 
+
+    const {name, age, ...rest} = body;
+    console.log(name, age, rest)
+---------------------------------------
+
+f. let and const keyword : ES6 gives 2 new keyword for declares variable before es6 
+we only can use var keyword for declaring variables.
+    
+    Difference b/w let var and const
+    var : 1. it has functional/global scope.
+          2. it value can be changed.
+          3. we can re-declare the variable.
+          4. It can be declared without initialization.
+
+    let: 1. it has block scope ({})
+         2. it value can be changed.
+         3. we cannot re-declare the variable.
+         4. It can be declared without initialization.
+
+    const:  1. it has block scope ({})
+            2. it value cannot be changed.
+            3. we cannot re-declare the variable.
+            4. It cannot be declared without initialization.
+
+
+
+////////////////////////////////////////////////////////////////
+
+
+
+
+#What is first class function ?
+A function can be treated like a variable is called first class function.
+
+const fn = () => {
+    console.log('hello');
+}
+
+// function treated like variable 
+const myfn = () => {
+    console.log('first class function called')
+}
+myfn();
+function test(cb){
+
+    ....
+    ....
+    cb()
+}
+test(myfn)
+
+// 3809 6568 863 01
+
+/////////////////////////////////////////////////////////////////////////
+
+# higher-order function  ?
+
+It is a function that accepts functions as parameters and/or returns a result as function.
+
+arr=[1,2,4,6];
+const result = arr.map( (val) => {
+    
+    return val*3;
+});
+console.log(result) // [3,6,12,18]
+
+
+const res = arr.filter( (val) => {
+    return val > 2
+})
+console.log(res) // [4,6]
+
+const sum = arr.reduce( (acc,val) => {
+    return val+acc
+},0)
+console.log(sum); // 13
+
+
+//////////////////////////////////////////////////////////////////////////
+
+// scope 
+1. Scope determines the acessibility of variables, object sand functions.
+
+* In javascript, a variable has 3 types
+a. Block Scope
+b. Function Scope
+c. Global Scope
+https://codesandbox.io/s/agitated-einstein-k3ilfv?file=/src/index.js
+
+--------------------- ------------------------
+// hoisting
+2. Hoisting in javascript is a behavior in which a general function and variables can be used before declaration.
+
+	console.log(test); // it will not get the error // undefined
+	var test = 2;
+---------------------------------------------
+// closures
+3. Closure means that an inner function always has access to the variable of its outer function, 
+even after the outest function has returned.
+
+function abc(){
+	var x = 10;
+	return function test(b){
+		return function test2(){
+            console.log(x,b); // we can access the variable x in inner function
+        }
+	}
+
+}
+const xyz = abc();
+// 10;
+-----------------------------------------------
+
+// callbacks
+4. A callback is a function which pass as a parameter in other function.
+
+function myfnc(p, cb){
+	console.log(p);
+	cb();
+}
+
+functions test(){
+	console.log('test function');
+}
+
+const kk = myfnc( 2, test)
+
+-----------------------------------------------
+// Promises
+5. Promises is a good way to handle asynchronous operations. 
+* Its used to find out if the asynchronous operation is successfully completed or not
+* A promise may have one of three states
+	. Pending
+	. Fulfilled
+	. Rejected
+
+    const myPromise = new Promise( (resolve,reject) => {
+        setTimeout( () => {
+            data = true;
+            if( data ){
+                resolve('data have')
+            }else{
+                reject('not have data')
+            }
+        },1000)
+    });
+    myPromise.then( (res) => console.log(res) ).then( (err) => console.log(err) )
+    console.log('done')
+----------------------------------------------
+
+
+// Async & Await
+6. Async & Await -> Stop and wait until something is resolved.
+
+	* We use the async keyword with a function to represent that the function is an asynchronous function.
+	* The async function returns a promise.
+    
+    const fetchData = async () => {
+    	const myPromise = new Promise( (resolve,reject) => {
+            setTimeout( () => {
+                data = true;
+                if( data ){
+                    resolve('data have')
+                }else{
+                    reject('not have data')
+                }
+            },1000)
+        });
+        let res = await myPromise;
+        console.log(res)
+        console.log('done')
+    }
+fetchData()
+----------------------------------------------
+//
+
+
+# Temperal dead zone : It is the term to describe state 
+where variables are in the scope but they are not yet declared.
+
+function abc(){
+    console.log(a, b, c);
+
+    var a=20;
+    let b=3;
+    const c = 3.14;
+}
+abc();
+
+// arrow function pointing to window object , its not have own this
+const x=23;
+const cFnc = () => {
+    console.log(this.x)
+}
+cFnc()
+const vv = ()=> 
+---------------------------------------------
+
+// output based question
+
+console.log('a'); // first
+setTimeout(() => {
+    console.log('setm')
+},0); // fourth : it will go task queue / callback queue * note: settimeout not part of js 
+// it is a part of browser web api
+Promise.resolve( () => console.log('mypromise') ).then( res => res.json() ); // third : it will go micro task queue
+console.log('b'); // second
+
+
+
+/* output will be : 
+a
+b
+myPromise
+setm
+*/
+
+-----------------------------------------
+// infinite currying : add(2)(3)(4) // 9
+// we can make it using closures
+// closure are function inside the function
+// inner functions has ability to get the value of its outer scope or global scope 
+function add(a){
+    return function(b){
+        if( b ) return add(a+b);
+        return a;
+    }
+}
+
+add(2)(3)(4)()
+
+--------------------------------
+// method chaining like calculator
+// make  const res = cal.add(4).multiply(3).subtract(2);
+// console.log( res.total )
+const calculator = {
+    total:0,
+    add:function(number){
+        this.total = this.total + number;
+        return this;
+    },
+    multiply: function(number){
+        this.total = this.total * number;
+        return this;
+    },
+    subtract:function(number){
+        this.total = this.total - number;
+        return this;
+    },
+    devide:function(number){
+        this.total = this.total/number;
+        return this;
+    }
+}
+
+const res = calculator.add(4).multiply(3).subtract(2).devide(2);
+console.log( res.total )
+
+#1 const course = ['javascript','java','c','c++','py'];
+delete course[2];
+console.log(course.length); // 5 : becoz array is changed ['javascript','java',empty,'c++','py']
+
+#2 const course1 = ['javascript','java','c','c++','py'];
+course1.length = 0;
+course1[0] // undefined : becoz we set the array length is zero
+
+#3 
+for (var i = 0; i < 3; i++) {
+    setTimeout( () => {
+        console.log(i);
+    }, 1000)
+} // 3: 3 times becoz var has global scope
+
+for (var i = 0; i < 3; i++) {
+    abc => () {
+        console.log(i);
+    }
+    setTimeout( abc , 1000)
+}
+
+
+
+
+let num = 50; /// 0 : 5
+
+function getZerosFromNum(num){
+    let res = 0;
+    for( let i=1; i<=num;i++ ){
+        if(i>9){
+            let arr = i.toString().split('');
+            if( arr.includes('0') ){
+                // console.log(arr);
+                res++;
+            }
+            
+        }
+    }
+    console.log(res);
+    return res;
+}
+
+getZerosFromNum(num)
+
+(function testing(x){
+    var x = 2;
+    delete x;
+    console.log(x)
+
+})(45)
+
+
+
+// html elements questions
+// #Block level and Inline elements
+
+// 1. Block-level Elements
+// A block-level element always starts on a new line, 
+// and the browsers automatically add some space before and after the element.
+// block elements example : <div></div>, <p></p> <form></form>, <nav></nav><header></header>
+
+// 2. Inline Elements
+// An inline element does not start on a new line.
+// An inline element only takes up as much width as necessary.
+// inline elements example : <span></span>, <a></a>, <b></b>, <strong></strong> <input /> <button>< /button>
+
+// # What are semantic elements in HTML 
+// symantic elements are those element which have meaningful name
+// <header></header>, <footer></footer> , <form></form>, <table>, <article>
+
+
+// My Role and responsiblities was
+// To manage the all things in forntend like create 
+
+
+//"What will be the output of the below code?
+let obj1 = {
+    name: "user one",
+    address: {
+        city: "Kolkata",
+        pinCode: "700083",
+        country: "India"
+    }
+};
+let obj2 = {...obj1};
+obj2.pinCode="700089";
+obj2.name="user two";
+console.log(obj1);
+
+
+// make protoType of map, filter, reduce  
+const arr = [1,2,3,4,5];
+const res = arr.map( (val, i, arr) => {
+    return val*2;
+});
+
+
+
+console.log( res );
+
+const res1 = arr.filter( (val) => (val > 10) ? val : '' );
+console.log( res );
+
+const sum = arr.reduce( (acc, val) => {
+    return acc + val
+}, 0)
+
+
+
+
+
+
+
+
+
+// 1 what is undefined ?
+/// undefined means, variable has been declared but not assgined a value ///
+console.log(x);
+var x=3;
+
+////////////////// ///////////////////////////////
+// 2. not defined ?
+/// not defined means, a variable you are trying to use but not declared.
+
+// console.log(y) 
+
+// 3 what is null ?
+// Null is special type value in js, Where we assign value Null it indicated absence of data.
+var z = null;
+// console.log(z)
+// typeof z // object
+
+//////////// //////////////////
+// 4. Hoisting ?
+// When we run javascript file then javascript engine 
+// It's a mechanism where variables and general function declartion are moved to the top of the scope.
+// or we can say that we can get the variable and function before declaration.
+// before the code executing
+
+// console.log(a);
+// var a =10
+
+// Are javascript initialization hoisted ?
+// No.
+
+//////////////  //////////////
+// 6. what is use strict
+// "use strict" checks if the variable is defined using "var" keyword
+
+let bb = 10;
+// console.log(bb)
+
+// 7. Closures ?
+// Closures are functions inside function and it makes a normal function stateful.
+
+// example clousre
+
+// function simpleFunction() {
+//     var x = 0;
+//     x++;
+//     return x;
+// }
+
+// console.log( simpleFunction() );
+
+// console.log( simpleFunction() );
+// function clsFn(){
+//     var i = 0;
+//     function increment(){
+//         i++;
+//     }
+//     return {
+//         increment
+//     }
+    
+// }
+// var clsFnref = clsFn();
+// var dd = clsFnref.increment();
+// console.log( dd );
+// console.log(  dd ); 
+
+
+

@@ -1,0 +1,17 @@
+
+A JWT needs to be stored in a safe palce inside the user's browser.
+
+If you store it inside localStorage, its accessible by any script inside your page
+(which is a bad as it sounds, as an XSS attack can let an external attacker get access to the token)
+
+### warning ###
+Dont'st store it in local storage (or session storage). 
+If any of the third-party scripts you include in your page gets
+compromised, it ca access all your user's tokens.
+
+The JWT needs to be stored inside an httpOnly cookie,
+ a special kind of cookie that's only sent in HTTP requests to the server, 
+ and it's never accessible ( both reading or writing from javascript running in the browser).
+
+ 630c91b97162438aa04557fa 
+ 630c91b97162438aa04557fa

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>
+		Closure
+	</title>
+</head>
+
+<body>
+
+	<script type="text/javascript">  
+
+	
+		function cartSetting(){
+
+			let _count = 0;
+
+			function _updateCount(val){
+				_count = _count + val
+			}
+
+			return{
+				increment(){
+					_updateCount(1)
+				},
+				decrement(){
+					_updateCount(-1)
+				},
+				cartValue(){
+					return _count;
+				}
+			}
+		}
+		
+		const cart = cartSetting();
+		cart.increment();
+		cart.increment();
+		cart.increment();
+		cart.increment();
+		cart.decrement();
+		cart.increment();
+		cart.increment();
+
+		console.log('cart data ',cart.cartValue());
+
+
+	</script>
+</body>
+
+</html>

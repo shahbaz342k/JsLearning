@@ -1,0 +1,162 @@
+
+# why react js so popular?
+
+Ans: There are so many reason for react popular.
+1. It uses virtual DOM instead of Real DOM;
+2. When ever the data changes in the UI, it actually compare the and only re renderd 
+that part of component which has to change instead of entire application re rendered.
+3. it has one way binding, so you can pass data from parent to child only.
+So one way bindinfg makes debugging easy. 
+4. Everything in react is component, which are resuable.
+5. JSX it is html like syntax, With the help of jsx we can write html in js file. 
+
+# so these are things which react make really popular.
+
+#  map and foreach diffrence ?
+1. map return the new array : foreach does not return anything
+2. map does not change to orginal array : foreach change the orignal array
+
+Which One Should I Use, map or forEach?
+Now, it boils down to this question: how should you decide whether to use the map or forEach method?
+
+If you’re planning to alter the array elements by applying a function, you should use the map method, since it doesn’t modify 
+the original array and returns a new array. In this way, the original array is kept intact. 
+On the other hand, if you want to loop through all the elements of an array and don’t need a returned array,  
+use the forEach method.
+* example 
+const arr = [1,2,3,4,5]
+// map and foreach 
+let resmap  = arr.map( (item) => item *3 );
+console.log(resmap);
+
+
+console.log('before not use for each :', arr)
+
+let resforech = arr.forEach( (item,key,array) => {
+    array[key] = item *2;
+})
+console.log(resforech)
+console.log('after use for each :', arr)
+
+# React Fragment ?
+Ans : They are empty tags. In component we wrap the jsx in react fragment tag.
+
+# Differnce b/w states and props ?
+1. state are mutable : props non mutable
+2. states define in component : props are pass from one component to another
+3. stateless component cannot have states : while stateless component can have props
+4. ssd : major role it makes the component resuable.
+
+# What is react hooks and define some hooks?
+//Ans: Hooks are used in functional component which is used for manage the states
+There many types of hook
+a. useState() // state defining
+b. useEffect(); // for achieve life cycle method.
+c. useNavigate() =>  // using navigate to the user to other component/page
+c. useCallback(); // used for optimising the app, avoid re-rendering the component return memozied function
+d. useMemo(); // used for optimising the app, return memozied value,
+e. useReducer(); 
+f. useContext(); 
+g. useSelector( (state) => state.cart ); // used in redux for getting state value from the store
+
+# Difference b/w useMemo and useCallback
+Ans: useMemo : Return memozied value. Means it store calculated data on every render and return the
+previously computed value if arguments are same.
+
+useCallback : It avoid the re-rendering the child component in the parent component
+How we have, you know a method of the parent component passing in the child component we are 
+passing that method as a porp to the child component.
+
+if we pass the dependency in useCallback it does not let create a new instance every time 
+unless it is really required.
+
+# what is redux and how it works
+Ans : Redux is used to manage the state at the top level so it has the single store which knows a lot about react applicaiton.
+ it can store a multiple states of the application.
+
+ If any component want to read the state from the sotre the connection can be created b/w component and store.
+ And the good thing about redux is it has the very clear flow. It has action and reducer
+ Action are basicaly events which performed by a user like click event or something else.
+
+ And reducer has two things action and payload. it check the action in switch case
+ and sent the payload according what action to the store.
+
+
+5. Controlled and uncontrolled input diff?
+Ans:  
+
+    a. In a controlled component, form data is handled by a React component.
+    b. And In uncontrolled components, where form data is handled by the DOM itself.
+
+    example 
+    suppose we have a form and inside form we have input fields and submit button
+    and we didn't pass the onClick and onSubmit event 
+    so when we submit the form all data handled by the DOM 
+
+
+# What are the lifecycle methods of React JS class components?
+
+*componentWillMount: Executed before rendering and is used for App level configuration in your root component.
+
+*componentDidMount: Executed after first rendering and here all AJAX requests, DOM or state updates, and set up eventListeners should occur.
+
+*componentWillReceiveProps: Executed when particular prop updates to trigger state transitions.
+
+*shouldComponentUpdate: Determines if the component will be updated or not. By default it returns true. If you are sure that the component doesn't need to render after state or props are updated, you can return false value. It is a great place to improve performance as it allows you to prevent a rerender if component receives new prop.
+
+*componentWillUpdate: Executed before re-rendering the component when there are pros & state changes confirmed by shouldComponentUpdate which returns true.
+
+*componentDidUpdate: Mostly it is used to update the DOM in response to prop or state changes.
+
+*componentWillUnmount: It will be used to cancel any outgoing network requests, or remove all event listeners associated with the component.
+
+// react js is so fast because it use virtual dom
+#virturalDom: When we load the page in react virtual dom create a copy of real dom ( all elements of html );
+When we change something in DOM then it compare the elements before change
+and after change then it re-render only that elements not whole dom.
+
+
+function testing(){
+    const a = b = c = 1;
+}
+testing();
+console.log(a,b,c)
+
+
+
+
+
+
+turing questions
+// /////////////////
+replacestate react js
+react.children in map
+window resizing in react 16.8
+stateless component also known as container component?
+browser resize event react js
+set state second argument in react js
+if function and class comonent name same which segment true in react js
+    re render function component react
+
+
+#pass html in component from derived component
+
+function App(){
+
+    return (
+        <div>
+            <Other>
+                <h1>Hello this is fsdi </h1>
+            </Other>
+        </div>
+    )
+}
+
+
+function Other(props){
+
+    return (
+        {props.children}
+    )
+}
+https://codesandbox.io/s/youngest-female-forked-woycn4?file=/src/index.js

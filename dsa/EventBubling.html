@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Event Bubbling</title>
+	<style type="text/css">
+		#wrapper {
+		    background: red;
+		    width: 200px;
+		    padding: 20px;
+		}
+		
+		#child {
+		    background: yellow;
+		    padding: 10px;
+		}
+
+		#gchild {
+		    background: blue;
+		    padding: 10px;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div id="wrapper">
+		Click Here
+		<div id="child">
+			Click Here
+			<div id="gchild">Click Here</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		const parentId = document.getElementById('wrapper');
+		const childId  = document.getElementById('child');
+		const gChildId = document.getElementById('gchild');
+
+		// event bubbling 
+
+		parentId.addEventListener( 'click', function(e) {
+			// e.stopPropagation()
+			console.log('parent call')
+		})
+
+		childId.addEventListener('click', function(e){
+			e.stopPropagation()
+			console.log('child call');
+		})
+
+		gChildId.addEventListener('click', function(e){
+			e.stopPropagation()
+			console.log('grand chicl call')
+		})
+
+		// function as objects
+		var body = "return Math.PI * (radius*radius)"
+		var circle = new Function('radius', body)
+		console.log( circle(3) )
+
+		// generator functions: 
+		function* generatorFnc(){
+			yield 1
+			yield 2
+			yield 3
+			return 4;
+		}
+		let genrator = generatorFnc();
+		let one = genrator.next();
+		// alert(one)// object object 
+		// alert( JSON.stringify(one) )
+		console.log( one );
+		let two = genrator.next();
+		let three = genrator.next();
+		let four = genrator.next();
+		let five = genrator.next();
+		// console.log( two );
+		// console.log( three );
+		// console.log( four );
+		// console.log( five );
+
+
+		const randomobj = {
+			name:'Tutorial',
+			video:['js','php','laravel'],
+			print(){
+				console.log(this.name);
+				this.video.forEach( (item) => {
+					console.log(this.name,':', item)
+				})
+			}
+		} 
+
+		// randomobj.print();
+
+
+
+		function abc(){
+		    console.log(a,b,c);
+
+		    var a=20;
+		    let b=3;
+		    const c = 3.14;
+		}
+		// abc()
+
+		var ab=23;
+		
+		const cFnc = () => {
+			var n =23
+		    console.log(this.ab)
+		}
+		cFnc()
+
+	</script>
+</body>
+</html>

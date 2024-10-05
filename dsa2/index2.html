@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Learning Js</title>
+        <link href="/style.css" rel="stylesheet"></link>
+    </head>
+    <body>
+        <!-- <script src="interview.js"></script> -->
+        <div class="myContainer">
+            <div class="tWrap">
+                <div class="dt-data">
+                    <h1 id="dt-whichday">00</h1>
+                    <h1 id="dt-time">00</h1>
+                    
+                    <div>
+                        <span id="dt-date">00</span>
+                        <span id="dt-month">00</span>
+                        <span id="dt-year">00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <style>
+        .dt-date{
+            font-weight: 500;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+        }
+        span#dt-date:after, span#dt-month:after {content: "-";margin-left: 4px;}
+    </style>
+    <script src="/time.js"></script>
+</html>
